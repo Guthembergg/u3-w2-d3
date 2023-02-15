@@ -1,4 +1,5 @@
 import { Nav, Navbar } from "react-bootstrap";
+import { Link, useLocation } from "react-router-dom";
 
 const MyNav = () => {
   return (
@@ -28,9 +29,9 @@ const MyNav = () => {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item className="nav-item active">
-            <Nav.Link className="nav-link font-weight-bold" href="#j">
+            <Link className="nav-link font-weight-bold nav-link" to="/">
               TV Shows
-            </Nav.Link>
+            </Link>
           </Nav.Item>
           <Nav.Item className="nav-item">
             <Nav.Link className="nav-link font-weight-bold" href="#j">

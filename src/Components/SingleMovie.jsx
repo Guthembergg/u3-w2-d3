@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Image, Spinner, Alert, Modal, Button } from "react-bootstrap";
 import ModalComp from "./ModalComp";
+import { Link } from "react-router-dom";
 
 class SingleMovie extends Component {
   state = {
@@ -11,38 +12,6 @@ class SingleMovie extends Component {
     selected: false,
     selectedMovie: "",
     show: false,
-  };
-
-  fetchMovie = async () => {
-    try {
-      const response = await fetch(
-        `http://www.omdbapi.com/?apikey=46c9a463&i=${this.props.movie.imdbID}`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        this.setState({
-          movie: data,
-          // isLoading: false,
-        });
-      } else {
-        this.setState({
-          // isLoading: false,
-          // hasError: true,
-          errorMessage: `Error loading content ERROR: ${response.status}`,
-        });
-      }
-    } catch (error) {
-      this.setState({
-        // isLoading: false,
-        // hasError: true,
-        errorMessage: `CATCH FATAL ERROR: ${error.message}`,
-      });
-    }
-  };
-  componentDidMount = () => {
-    this.fetchMovie();
-    console.log(this.state.movie);
   };
 
   render() {
@@ -58,7 +27,14 @@ class SingleMovie extends Component {
         }}
       >
         {this.state.movie && (
-          <ModalComp movie={this.state.movie} error={this.state.errorMessage} />
+          // <ModalComp movie={this.state.movie} error={this.state.errorMessage} />
+          <Link
+            className="mb-3 mt-3 btn btn-primary"
+            variant="outline-light"
+            to={`/movie-details/${this.props.movie.imdbID}`}
+          >
+            More info
+          </Link>
         )}
 
         <Image
