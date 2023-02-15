@@ -24,7 +24,7 @@ const SingleComment = ({ comment }) => {
   };
 
   return (
-    <ListGroup.Item className="mt-3 mb-5">
+    <ListGroup.Item className="mt-3 ">
       <div className="d-flex justify-content-between align-items-center">
         {comment.comment}
         <div className="d-flex align-items-center">
