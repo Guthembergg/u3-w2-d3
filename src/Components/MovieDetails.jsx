@@ -2,7 +2,7 @@ import { Modal, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-function ModalComp(props) {
+const MovieDetails = (props) => {
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
   const [trueMovie, settrueMovie] = useState(null);
@@ -80,6 +80,6 @@ function ModalComp(props) {
       )}
     </>
   );
-}
+};
 
-export default ModalComp;
+export default MovieDetails;

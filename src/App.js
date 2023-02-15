@@ -4,7 +4,8 @@ import "./App.css";
 import GenresComponent from "./Components/GenresComponent";
 import MyFooter from "./Components/MyFooter";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ModalComp from "./Components/ModalComp";
+import ModalComp from "./Components/MovieDetails";
+import MovieDetails from "./Components/MovieDetails";
 
 function App() {
   return (
@@ -13,7 +14,10 @@ function App() {
         <MyNav />
         <Routes>
           <Route path="/" element={<GenresComponent />}></Route>
-          <Route path="/movie-details/:movieId" element={<ModalComp />}></Route>
+          <Route
+            path="/movie-details/:movieId"
+            element={<MovieDetails />}
+          ></Route>
         </Routes>
 
         <MyFooter />

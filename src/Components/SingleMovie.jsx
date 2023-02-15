@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Image, Spinner, Alert, Modal, Button } from "react-bootstrap";
-import ModalComp from "./ModalComp";
+import ModalComp from "./MovieDetails";
 import { Link } from "react-router-dom";
 
 class SingleMovie extends Component {
