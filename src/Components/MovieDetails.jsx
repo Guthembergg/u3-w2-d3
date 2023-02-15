@@ -2,10 +2,14 @@ import { Modal, Button, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import CommentArea from "./CommentArea";
+import Loading from "./Loading";
+import Error from "./Error";
 
 const MovieDetails = (props) => {
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const [trueMovie, settrueMovie] = useState(null);
 
   const movieParam = useParams();
@@ -19,12 +23,14 @@ const MovieDetails = (props) => {
         const data = await response.json();
         console.log(data);
         setMovie(data);
-        // isLoading: false,
+        setLoading(false);
       } else {
         setError(`Error loading content ERROR: ${response.status}`);
+        setLoading(false);
       }
     } catch (error) {
       setError(`CATCH FATAL ERROR: ${error.message}`);
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -33,7 +39,18 @@ const MovieDetails = (props) => {
 
   return (
     <>
-      {movie && (
+      {!loading && error && !movie && (
+        <div className="d-flex justify-content-center">
+          <Error />
+        </div>
+      )}
+
+      {loading && !error && !movie && (
+        <div className="d-flex justify-content-center">
+          <Loading />
+        </div>
+      )}
+      {movie && !error && (
         <>
           <Row className="mt-5 d-flex align-items-center text-center flex-column w-100">
             <Col
