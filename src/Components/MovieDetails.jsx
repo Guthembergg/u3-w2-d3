@@ -1,4 +1,4 @@
-import { Modal, Button, Row, Col } from "react-bootstrap";
+import { Modal, Button, Row, Col, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import CommentArea from "./CommentArea";
@@ -40,7 +40,7 @@ const MovieDetails = (props) => {
   return (
     <>
       {!loading && error && !movie && (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex ">
           <Error />
         </div>
       )}
@@ -52,19 +52,25 @@ const MovieDetails = (props) => {
       )}
       {movie && !error && (
         <>
-          <Row className="mt-5 d-flex align-items-center text-center flex-column w-100">
+          <Row className="mt-5 mb-5 d-flex  text-center flex-row w-100 ">
             <Col
               xs={7}
-              className="mt-5 d-flex align-items-center text-center flex-column"
+              className=" d-flex align-items-center text-center flex-column ml-5"
             >
-              <div className="justify-content-center ">
-                <h2
-                  className="text-center"
-                  style={{ fontWeight: "700", color: "white" }}
-                >
-                  {movie.Title}
-                </h2>
-              </div>
+              <h1
+                className="text-center mb-3"
+                style={{ fontWeight: "800", color: "white" }}
+              >
+                {movie.Title}
+              </h1>
+              <Image
+                className="img-fluid mb-5"
+                style={{ aspectRatio: "0.67" }}
+                src={movie.Poster}
+                alt="movie "
+                fluid
+              />
+              <div className="justify-content-center "></div>
               <div>
                 <p
                   className="text-center"
@@ -100,10 +106,13 @@ const MovieDetails = (props) => {
                 </div>
               </div>
             </Col>
-          </Row>
-          <Row xs={7} className="d-flex mt-5 w-100">
-            <Col className="d-flex align-items-center text-center flex-column">
-              <h2>Comment Area</h2>
+            <Col
+              className="d-flex align-items-center text-center flex-column mt-5"
+              xs={4}
+            >
+              <h2 style={{ color: "orange", fontWeight: "700" }}>
+                Comment Area
+              </h2>
               <CommentArea asin={movieParam.movieId} />
             </Col>
           </Row>
